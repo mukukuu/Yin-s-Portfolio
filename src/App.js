@@ -13,24 +13,24 @@ import Footer from "./components/Footer/index";
 
 function App() {
 
-  const [Tabs] = useState([
+  const [tabs] = useState([
     { name: 'About', description: 'About me' },
     { name: 'Project', description: 'My projects' },
     { name: 'Contact', description: 'Ways of contact' },
     { name: 'Resume', description: 'My resume' }
   ]);
 
-	const [currentTab, setCurrentTab] = useState(Tabs[0]);
-  const [SelectedTab, setSelectedTab] = useState(false);
+	const [currentTab, setCurrentTab] = useState(tabs[0]);
+  const [selectedTab, setSelectedTab] = useState(false);
 
 
 	return (
 		<div>
     <Nav
-        Tabs={Tabs}
+        tabs={tabs}
         setCurrentTab={setCurrentTab}
         currentTab={currentTab}
-        SelectedTab={SelectedTab}
+        SelectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       >
     </Nav>
@@ -43,7 +43,7 @@ function App() {
 
 				<main>
           
-        {!SelectedTab ? (
+        {!selectedTab ? (
           <>
             <About></About>
           </>

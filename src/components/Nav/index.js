@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { capitalizeFirstLetter } from "../../utils/helpers";
 
-
-
 function Nav(props) {
 
     const {
-        categories = [],
+        tabs = [],
         setCurrentCategory,
         currentCategory,
         contactSelected,
@@ -21,10 +19,6 @@ function Nav(props) {
         <header data-testid="header" className="flex-row px-1">
             <h2>
                 <a data-testid="link" href="/">
-                    <span role="img" aria-label="camera">
-                        {" "}
-                        📸
-                    </span>{" "}
                     Oh Snap!
                 </a>
             </h2>
@@ -38,7 +32,7 @@ function Nav(props) {
                     <li className={`mx-2 ${contactSelected && 'navActive'}`}>
                         <span onClick={() => setContactSelected(true)}>Contact</span>
                     </li>
-                    {categories.map((category) => (
+                    {tabs.map((category) => (
                         <li
                             className={`mx-1 ${currentCategory.name === category.name && !contactSelected && 'navActive'
                                 }`}
@@ -57,7 +51,5 @@ function Nav(props) {
         </header>
     )
 }
-
-
 
 export default Nav;
