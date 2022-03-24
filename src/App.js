@@ -1,41 +1,64 @@
-import logo from './logo.svg';
+
+import React, { useState } from "react";
 import './App.css';
 
-import Header from './components/Header';
+import Header from "./components/Header";
 import Resume from './components/Resume';
 import Nav from './components/Nav';
-import Content from './components/Content';
-import AboutMe from './components/AboutMe';
+import About from './components/About';
 import Project from "./components/Project";
-import ContactForm from './components/Contact';
-import Footer from './components/Footer';
+import Contact from './components/Contact';
+import Footer from "./components/Footer/index";
+
 
 function App() {
 
+  const [Tabs] = useState([
+    { name: 'About', description: 'About me' },
+    { name: 'Project', description: 'My projects' },
+    { name: 'Contact', description: 'Ways of contact' },
+    { name: 'Resume', description: 'My resume' }
+  ]);
+
+	const [currentTab, setCurrentTab] = useState(Tabs[0]);
+  const [SelectedTab, setSelectedTab] = useState(false);
 
 
+	return (
+		<div>
+    <Nav
+        Tabs={Tabs}
+        setCurrentTab={setCurrentTab}
+        currentTab={currentTab}
+        SelectedTab={SelectedTab}
+        setSelectedTab={setSelectedTab}
+      >
+    </Nav>
+
+			<div className="mobile-header">
+				<Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
+			</div>
+		
 
 
-
-  
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+				<main>
+          
+        {!SelectedTab ? (
+          <>
+            <About></About>
+          </>
+        ) : (
+          <Contact></Contact>
+        )}
+          
+          
+          </main>
+			
+			<div>
+				<Footer></Footer>
+			</div>
+		</div>
+	);
 }
 
 export default App;
