@@ -39,7 +39,7 @@ const Resume = () => {
                 <h3 className="p-3 black-background inline-block">Work Experience</h3>
             </div>
             <div>
-                <p className="p-3 black-background inline-block">Software Developer Engineer: Yardi Systems Inc. Jul 2018 – Jan 2021</p>
+                <p className="p-3 black-background inline-block">Software Developer since Septemper 2021</p>
             </div>
         
             

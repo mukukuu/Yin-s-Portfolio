@@ -1,64 +1,71 @@
 
 import React, { useState } from "react";
-import './App.css';
+ import './App.css';
 
-import Header from "./components/Header";
+
 import Resume from './components/Resume';
 import Nav from './components/Nav';
 import About from './components/About';
-import Project from "./components/Project";
+import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
-import Footer from "./components/Footer/index";
+import Header from './components/Header';
+import Footer from "./components/Footer";
+
+
 
 
 function App() {
+  const [currentPage, handlePageChange] = useState("About");
 
-  const [tabs] = useState([
-    { name: 'About', description: 'About me' },
-    { name: 'Project', description: 'My projects' },
-    { name: 'Contact', description: 'Ways of contact' },
-    { name: 'Resume', description: 'My resume' }
-  ]);
+  //  render the appropriate current page
+  const renderPage = () => {
+    switch (currentPage) {
+      case "About":
+        return <About />;
+      case "Portfolio":
+        return <Portfolio />;
+      case "Contact":
+        return <Contact />;
+      case "Resume":
+        return <Resume />;
 
-	const [currentTab, setCurrentTab] = useState(tabs[0]);
-  const [selectedTab, setSelectedTab] = useState(false);
+      default:
+        return <About />;
+    }
+  };
+
+  return (
+    <div>
+      <nav className="navbar">
+        <div className="navbar-brand">
+          <a
+            className="navbar-item"
+            rel="noreferrer"
+            target="_blank"
+            href="https://github.com/mukukuu"
+          >
+            <span className="content is-large">GitHub </span>
+          </a>
+        </div>
+      </nav>
+
+      <Header></Header>
 
 
-	return (
-		<div>
-    <Nav
-        tabs={tabs}
-        setCurrentTab={setCurrentTab}
-        currentTab={currentTab}
-        SelectedTab={selectedTab}
-        setSelectedTab={setSelectedTab}
-      >
-    </Nav>
+      {/* Pass the state value and the setter as props to NavTabs */}
+      <Nav
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+      />
+      {/* Call the renderPage function passing in the currentPage */}
+      <main>
+        <div>{renderPage(currentPage)}</div>
+      </main>
 
-			<div className="mobile-header">
-				<Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
-			</div>
-		
-
-
-				<main>
-          
-        {!selectedTab ? (
-          <>
-            <About></About>
-          </>
-        ) : (
-          <Contact></Contact>
-        )}
-          
-          
-          </main>
-			
-			<div>
-				<Footer></Footer>
-			</div>
-		</div>
-	);
+    <Footer></Footer>
+    </div>
+  );
 }
 
 export default App;
+

@@ -1,55 +1,33 @@
-import React, { useEffect } from 'react';
-import { capitalizeFirstLetter } from "../../utils/helpers";
+import React from "react";
 
 function Nav(props) {
-
-    const {
-        tabs = [],
-        setCurrentCategory,
-        currentCategory,
-        contactSelected,
-        setContactSelected
-    } = props;
-
-    useEffect(() => {
-        document.title = capitalizeFirstLetter(currentCategory.name);
-    }, [currentCategory]);
-
-    return (
-        <header data-testid="header" className="flex-row px-1">
-            <h2>
-                <a data-testid="link" href="/">
-                    Oh Snap!
-                </a>
-            </h2>
-            <nav>
-                <ul className="flex-row">
-                    <li className="mx-2">
-                        <a data-testid="about" href="#about" onClick={() => setContactSelected(false)}>
-                            About me
-                        </a>
-                    </li>
-                    <li className={`mx-2 ${contactSelected && 'navActive'}`}>
-                        <span onClick={() => setContactSelected(true)}>Contact</span>
-                    </li>
-                    {tabs.map((category) => (
-                        <li
-                            className={`mx-1 ${currentCategory.name === category.name && !contactSelected && 'navActive'
-                                }`}
-                            key={category.name}
-                        >
-                            <span onClick={() => {
-                                setCurrentCategory(category);
-                                setContactSelected(false);
-                            }}>
-                                {capitalizeFirstLetter(category.name)}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </header>
-    )
+  const tabs = ["About", "Portfolio", "Contact", "Resume"];
+  return (
+    <div className="tabs is-centered">
+      <ul className="nav nav-tabs">
+        {tabs.map((tab) => (
+          <li
+            className={
+              props.currentPage === tab ? "nav-item is-active" : "nav-item"
+            }
+            key={tab}
+          >
+            <a
+              href={"#" + tab.toLowerCase()}
+              // Whenever a tab is clicked on,
+              // the current page is set through the handlePageChange props.
+              onClick={() => props.handlePageChange(tab)}
+              className={
+                props.currentPage === tab ? "nav-link active" : "nav-link"
+              }
+            >
+              {tab}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default Nav;
