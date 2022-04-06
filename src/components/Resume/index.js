@@ -1,10 +1,12 @@
 import React from 'react';
+import file from '../../files/filetest.rtf'
+
 
 const Resume = () => {
     return (
         <div className="color-1 p-3">
             <div>
-                <h2 className="black-background p-3 inline-block">Resume</h2>
+                <h2 className="black-background p-3 inline-block">- Resume -</h2>
             </div>
             
             <div>
@@ -42,9 +44,12 @@ const Resume = () => {
                 <p className="p-3 black-background inline-block">Software Developer since Septemper 2021</p>
             </div>
         
-            
+            <div>
+            <h2><a className="p-3 black-background inline-block" href={file}>Download Resume</a></h2>
+            </div>
 
         </div>
+        
     );
 }
 

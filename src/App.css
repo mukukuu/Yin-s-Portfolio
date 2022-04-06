@@ -195,6 +195,7 @@ nav a:hover {
 /* CARDS */
 .card {
   border-radius: 17px;
+  background-color:#4d5465;
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
@@ -212,6 +213,9 @@ nav a:hover {
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
+.contact-form{
+  align-items: center;
+}
 img {
   width: 50%;
   border-radius: 17px;
@@ -222,8 +226,16 @@ img {
   font-size: 1.4rem;
 }
 
+.card-content {
+background-color: #34373d;
+}
 .card-image{
-  width:auto
+  width:auto;
+  background-color: #5e637d;
+}
+
+.card-footer {
+  background-color: #4d5465;
 }
 
 /* FORM */
@@ -246,6 +258,11 @@ img {
   border: 2px solid var(--dark);
   border-radius: var(--border-radius);
 }
+
+.error-text{
+color:#e1f5f4;
+}
+
 
 [type='radio']:checked,
 [type='radio']:not(:checked) {

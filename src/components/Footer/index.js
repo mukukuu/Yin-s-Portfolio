@@ -3,7 +3,13 @@ import React from "react";
 function Footer() {
 	return (
 		<footer className="footer">
-			<p>HS tj jhgjfhd kgfgbjkjjkh </p>
+			
+
+			<div>
+             <a href="https://github.com/mukukuu">
+             <p>- My GitHub page -</p>
+            </a>
+			</div>
 		</footer>
 	);
 }
